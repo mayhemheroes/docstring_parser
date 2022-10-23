@@ -1,5 +1,7 @@
 project: docstring_parser
 target: string-parse
+testsuite:
+    - file://mayhem/testsuite
 
 cmds:
   - cmd: /src/mayhem/fuzz_str.py
