@@ -9,8 +9,10 @@ with atheris.instrument_imports():
 
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
-    parse(fdp.ConsumeUnicodeNoSurrogates(128))
-
+    try:
+        parse(fdp.ConsumeUnicodeNoSurrogates(128))
+    except IndexError:
+        pass
 def main():
     atheris.Setup(sys.argv, TestOneInput)
     atheris.Fuzz()
