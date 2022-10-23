@@ -4,15 +4,14 @@ import atheris
 import sys
 
 with atheris.instrument_imports():
-    from docstring_parser import parse
+    from docstring_parser import parse, compose
 
 
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
-    try:
-        parse(fdp.ConsumeUnicodeNoSurrogates(128))
-    except IndexError:
-        pass
+    doc = parse(fdp.ConsumeUnicodeNoSurrogates(128))
+    compose(doc)
+
 def main():
     atheris.Setup(sys.argv, TestOneInput)
     atheris.Fuzz()
