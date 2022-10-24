@@ -4,16 +4,17 @@ import atheris
 import sys
 
 with atheris.instrument_imports():
-    from docstring_parser import rest, parser
+    from docstring_parser import rest, parser, DocstringStyle, RenderingStyle, ParseError
 
+file_types = [DocstringStyle.REST, DocstringStyle.GOOGLE, DocstringStyle.NUMPYDOC, DocstringStyle.EPYDOC]
+rendering_style = [RenderingStyle.COMPACT, RenderingStyle.CLEAN, RenderingStyle.EXPANDED]
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
-
-    doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(128))
-    parser.compose(doc)
-
-    doc2 = rest.parse(fdp.ConsumeUnicodeNoSurrogates(128))
-    rest.compose(doc2)
+    try:
+        doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(128), fdp.PickValueInList(file_types))
+        parser.compose(doc, fdp.PickValueInList(file_types), fdp.PickValueInList(rendering_style))
+    except ParseError:
+        pass
 
 def main():
     atheris.Setup(sys.argv, TestOneInput)
