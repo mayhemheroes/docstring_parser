@@ -1,0 +1,36 @@
+"""The first derivative of a function on an equidistant grid.
+    
+    Calculates the first derivative of a function of one variable given on
+    an equistant grid using a finite difference scheme. The algorithm has
+    second order accuracy. Boundary and interior are treated at the same
+    level of accuracy.
+    
+    Parameters
+    ----------
+    f : array_like
+        The array with the function values to differentiate. 
+        Must contain at least three values.
+    dx : float > 0
+        The grid spacing.
+        
+    Returns
+    -------
+    array_like
+        Array of the same shape as f, containing the values of first derivative.
+        
+    Raises
+    ------
+    AssertionError
+        if grid spacing is not positive.
+    
+    
+    References
+    ----------
+    .. [1] "Finite Difference Coefficient", https://en.wikipedia.org/wiki/Finite_difference_coefficient
+    Examples
+    --------
+    >>> import numpy as np
+    >>> x = np.linspace(-1, 1, 100)
+    >>> f = np.sin(x)
+    >>> df_dx = diff(f, x[1] - x[0])
+    """
