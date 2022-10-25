@@ -13,7 +13,8 @@ def TestOneInput(data):
     try:
         doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(128), fdp.PickValueInList(file_types))
         parser.compose(doc, fdp.PickValueInList(file_types), fdp.PickValueInList(rendering_style))
-    except ParseError:
+
+    except (ParseError, IndexError):
         pass
 
 def main():
