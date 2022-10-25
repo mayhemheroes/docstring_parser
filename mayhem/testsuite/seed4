@@ -1,0 +1,25 @@
+'''
+Example python file that is all tricked out.  Designed for epydoc,
+unittest and doctest.  Please keep updating to make this the best
+possible template file.
+@requires: U{lxml<http://codespeak.net/lxml/>} - For libxml2 ElementTree interface.  Not actually required for the template, but this is just a demo or requirements.
+@requires: U{Python<http://python.org/>} >= 2.4
+@requires: U{epydoc<http://epydoc.sourceforge.net/>} >= 3.0alpha3
+@author: U{'''+__author__+'''<http://xenon.stanford.edu/~schwehr/>} FIX: replace with your name/url
+@version: ''' + __version__ +'''
+@copyright: 2006
+@var __date__: Date of last svn commit
+@undocumented: __version__ __author__ __doc__ myparser
+@since: 2006-Sep-26  FIX: replace with the file creation date
+@status: under development
+@organization: U{CCOM<http://ccom.unh.edu/>} - FIX: if not CCOM change the name and link
+@license: CCOM internal use only, unless explicitly authorized.  If
+this is just the template, then no license is implied.
+@bug: epydoc --check complains about unittest additions
+@bug: Bug two
+@todo: Keep writing example code
+@todo: copy the code and replace the author and since fields
+@todo: To make your code executable after check-in (to allow for doc and unittest), do svn propset svn:executable ON yourfile.py
+@todo: "svn propedit svn:keywords yourfile.py", then put in "Date Revision"
+@see: U{python idioms<http://jaynes.colorado.edu/PythonIdioms.html>} - Read this before modifying any code here.
+'''
