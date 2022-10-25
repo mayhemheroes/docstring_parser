@@ -11,10 +11,10 @@ rendering_style = [RenderingStyle.COMPACT, RenderingStyle.CLEAN, RenderingStyle.
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
     try:
-        doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(128), fdp.PickValueInList(file_types))
+        doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(4096), fdp.PickValueInList(file_types))
         parser.compose(doc, fdp.PickValueInList(file_types), fdp.PickValueInList(rendering_style))
 
-    except (ParseError, IndexError):
+    except ParseError:
         pass
 
 def main():
