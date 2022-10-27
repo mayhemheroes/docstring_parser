@@ -1,4 +1,3 @@
-'''
 Example python file that is all tricked out.  Designed for epydoc,
 unittest and doctest.  Please keep updating to make this the best
 possible template file.
@@ -22,4 +21,3 @@ this is just the template, then no license is implied.
 @todo: To make your code executable after check-in (to allow for doc and unittest), do svn propset svn:executable ON yourfile.py
 @todo: "svn propedit svn:keywords yourfile.py", then put in "Date Revision"
 @see: U{python idioms<http://jaynes.colorado.edu/PythonIdioms.html>} - Read this before modifying any code here.
-'''

@@ -1,4 +1,4 @@
-"""Example Google style docstrings.
+Example Google style docstrings.
 
 This module demonstrates documentation as specified by the `Google Python
 Style Guide`_. Docstrings may extend over multiple lines. Sections are created
@@ -29,6 +29,3 @@ Todo:
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
-
-"""
-
