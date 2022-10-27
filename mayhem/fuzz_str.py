@@ -8,6 +8,7 @@ with atheris.instrument_imports():
 
 file_types = [DocstringStyle.REST, DocstringStyle.GOOGLE, DocstringStyle.NUMPYDOC, DocstringStyle.EPYDOC]
 rendering_style = [RenderingStyle.COMPACT, RenderingStyle.CLEAN, RenderingStyle.EXPANDED]
+@atheris.instrument_func
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
     try:
@@ -18,6 +19,7 @@ def TestOneInput(data):
         pass
 
 def main():
+    atheris.instrument_all()
     atheris.Setup(sys.argv, TestOneInput)
     atheris.Fuzz()
 
