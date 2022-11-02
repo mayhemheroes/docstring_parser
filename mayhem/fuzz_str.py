@@ -1,25 +1,24 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 
 import atheris
 import sys
 
 with atheris.instrument_imports():
-    from docstring_parser import rest, parser, DocstringStyle, RenderingStyle, ParseError
+    import docstring_parser as dp
 
-file_types = [DocstringStyle.REST, DocstringStyle.GOOGLE, DocstringStyle.NUMPYDOC, DocstringStyle.EPYDOC]
-rendering_style = [RenderingStyle.COMPACT, RenderingStyle.CLEAN, RenderingStyle.EXPANDED]
+file_types = [dp.DocstringStyle.REST, dp.DocstringStyle.GOOGLE, dp.DocstringStyle.NUMPYDOC, dp.DocstringStyle.EPYDOC]
+rendering_style = [dp.RenderingStyle.COMPACT, dp.RenderingStyle.CLEAN, dp.RenderingStyle.EXPANDED]
+
 @atheris.instrument_func
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
     try:
-        doc = parser.parse(fdp.ConsumeUnicodeNoSurrogates(4096), fdp.PickValueInList(file_types))
-        parser.compose(doc, fdp.PickValueInList(file_types), fdp.PickValueInList(rendering_style))
-
-    except ParseError:
+        doc = dp.parser.parse(fdp.ConsumeUnicodeNoSurrogates(4096), fdp.PickValueInList(file_types))
+        dp.parser.compose(doc, fdp.PickValueInList(file_types), fdp.PickValueInList(rendering_style))
+    except dp.ParseError:
         pass
 
 def main():
-    atheris.instrument_all()
     atheris.Setup(sys.argv, TestOneInput)
     atheris.Fuzz()
 
