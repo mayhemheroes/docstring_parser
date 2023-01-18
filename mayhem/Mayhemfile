@@ -1,0 +1,6 @@
+project: docstring_parser
+target: string-parse
+
+cmds:
+  - cmd: /src/mayhem/fuzz_str.py
+    libfuzzer: true

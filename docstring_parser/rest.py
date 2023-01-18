@@ -23,7 +23,7 @@ from .common import (
 
 
 def _build_meta(args: T.List[str], desc: str) -> DocstringMeta:
-    key = args[0]
+    key = args[0] if args else None  #Mayhem patch - args is often empty which prevents fuzzing
 
     if key in PARAM_KEYWORDS:
         if len(args) == 3:
