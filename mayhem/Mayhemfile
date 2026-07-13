@@ -1,0 +1,19 @@
+# Mayhem target: docstring_parser (reST/Google/Numpydoc/Epydoc docstring parser).
+# The cmd binary is the compiled ELF launcher that drives mayhem/fuzz_str.py; Atheris
+# instruments the docstring_parser library so the run records coverage (edges).
+# NOTE: the project is named by its Mayhem slug (dash, not underscore). Mayhem normalizes
+# project slugs '_'->'-', but the run-creation testsuite ACL check substitutes $MAYHEM_PROJECT
+# literally — an underscore name there fails run creation with "You do not have access to use
+# a test suite from the project ...". Using the slug resolves to the SAME existing project
+# (mayhemheroes/docstring-parser) and keeps run history.
+project: docstring-parser
+target: string-parse
+
+cmds:
+  - cmd: /mayhem/docstring_parser_fuzzer
+    libfuzzer: true
+
+# Seed corpus of representative docstrings (carried over from the original fork).
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/string-parse/testsuite
